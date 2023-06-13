@@ -13,16 +13,6 @@ ENV=$1
 
 # dfx build
 
-bash ./scripts/cleanup.sh $ENV;
- cd azle/ 
-# pwd
-bash ./scripts/deploy.sh $ENV;
-
-bash ./scripts/getCanisterIds.sh $ENV;
-cd ..
-bash ./scripts/backendCanisterId.sh;
-
-bash ./scripts/setEnvironment.sh;
 
 # npm install
 
@@ -37,8 +27,20 @@ if [[ $ENV == "local" ]]; then
 
     # # Start local replica
     # dfx start --clean --background
+bash ./scripts/cleanup.sh $ENV;
+ cd azle/ 
+# pwd
+bash ./scripts/deploy.sh $ENV;
+
+bash ./scripts/getCanisterIds.sh $ENV;
+cd ..
+bash ./scripts/backendCanisterId.sh;
+
+bash ./scripts/setEnvironment.sh;
+
+yarn build
+dfx deploy --network "$ENV"
 fi
 
 # Deploy exchange_rate and exchange_rate_assets
-yarn build
-dfx deploy --network "$ENV"
+
