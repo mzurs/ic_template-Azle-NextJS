@@ -1,8 +1,5 @@
 #!/bin/bash
-export  PATH="$HOME/bin:$PATH"
-
-
-
+# export  PATH="$HOME/bin:$PATH"
 
 # Call the script with deploy.sh {network}
 if [[ $# -lt 1 ]]; then
@@ -12,13 +9,20 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
-
 ENV=$1
-COURIER_API_KEY=$2
 
 # dfx build
 
-bash ./scripts/cleanup.sh $ENV
+bash ./scripts/cleanup.sh $ENV;
+ cd azle/ 
+# pwd
+bash ./scripts/deploy.sh $ENV;
+
+bash ./scripts/getCanisterIds.sh $ENV;
+cd ..
+bash ./scripts/backendCanisterId.sh;
+
+bash ./scripts/setEnvironment.sh;
 
 # npm install
 
@@ -31,12 +35,10 @@ if [[ $ENV == "local" ]]; then
         exit 1
     fi
 
-    
-
-    
     # # Start local replica
     # dfx start --clean --background
 fi
 
 # Deploy exchange_rate and exchange_rate_assets
+yarn build
 dfx deploy --network "$ENV"

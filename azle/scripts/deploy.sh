@@ -39,3 +39,5 @@ fi
 
 # Deploy exchange_rate and exchange_rate_assets
 dfx deploy --network "$ENV"
+
+dfx generate

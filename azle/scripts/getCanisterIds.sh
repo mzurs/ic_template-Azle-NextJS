@@ -1,5 +1,8 @@
 #!/bin/bash
-# Call the script with cleanup.sh {network}
+
+
+# azle/.dfx/local/canister_ids.json
+
 if [[ $# -lt 1 ]]; then
     echo "Number of arguments supplied not correct. Call this script: \
     ./deploy.sh {env} \
@@ -7,13 +10,19 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
+
 ENV=$1
 
-# Clean up directory to start new replica instance clean
-if [[ $ENV == "local" ]]; then
-    # Stop local replica
-    # dfx stop
 
-    # Remove .dfx folder
-    rm -rf .dfx
+if [[ $ENV == "local" ]]; then
+
+cp .dfx/local/canister_ids.json ./canister_ids.json
+
+fi
+
+
+if [[ $ENV == "ic" ]]; then
+
+cp .dfx/ic/canister_ids.json ./canister_ids.json
+
 fi
