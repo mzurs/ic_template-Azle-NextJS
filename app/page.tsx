@@ -7,14 +7,12 @@ export default function Home() {
 
   const handleSubmit = async () => {
     const azle = await makeAzleActor();
-    const random = Math.random();
-    const setMessageValue = await azle.setMessage(String(random));
-    console.log("setMessage Res", setMessageValue);
+ 
 
-    const getMessageValue = await azle.getMessage();
-    console.log("setMessage Res", getMessageValue);
+    const getRandomByte = await azle.randomBytes();
+    console.log("getRandomByte ", getRandomByte);
 
-    setMessage(getMessageValue);
+    setMessage(getRandomByte);
   };
   return (
     <main>
@@ -36,7 +34,7 @@ export default function Home() {
             className="mx-auto flex items-center p-5 justify-center mt-10 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5"
           >
             {" "}
-            Random Value
+            Random Bytes
           </button>
         </div>
         <div>

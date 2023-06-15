@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt  install jq
+# sudo apt  install jq
 
 value=$(jq '.azle_hello_world.local' config/backend_canister_ids.json)
 
