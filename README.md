@@ -16,13 +16,14 @@ Follwing are the steps to deploy your application locally
 
     `yarn && cd/azle && yarn && cd..`
 
-2. Run below command:
-    `dfx start --clean --background`
+2. Run below commands:
 
-    `bash scripts/deploy_frontend_canister.sh  local`
+   ```dfx start --clean --background```
+
+   `bash scripts/deploy_frontend_canister.sh  local`
 
 - To Stop Replica run:
 
-   `dfx stop`
+   ```dfx stop```
 
    ![Image](public/image.png)
