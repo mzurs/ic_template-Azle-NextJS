@@ -1,5 +1,4 @@
 #!/bin/bash
-# export  PATH="$HOME/bin:$PATH"
 
 # Call the script with deploy.sh {network}
 if [[ $# -lt 1 ]]; then
@@ -11,36 +10,34 @@ fi
 
 ENV=$1
 
-# dfx build
-
-
-# npm install
-
 if [[ $ENV == "local" ]]; then
 
     # Check DFX version
     version=$(dfx -V | sed 's/dfx\ //g' | sed 's/-.*$//g')
-    if [[ "$version" < "0.14.0" ]]; then
-        echo "dfx 0.14.0 or above required. Please do: dfx upgrade"
+    if [[ "$version" < "0.15.0" ]]; then
+        echo "dfx 0.15.0 or above required. Please do: dfx upgrade"
         exit 1
     fi
 
-    # # Start local replica
-    # dfx start --clean --background
-bash ./scripts/cleanup.sh $ENV;
- cd azle/ 
-# pwd
-bash ./scripts/deploy.sh $ENV;
+    bash ./scripts/cleanup.sh "$ENV"
 
-bash ./scripts/getCanisterIds.sh $ENV;
-cd ..
-bash ./scripts/backendCanisterId.sh;
+    cd azle/ || bash
 
-bash ./scripts/setEnvironment.sh;
+    # pwd
+    bash ./scripts/deploy.sh "$ENV"
 
-yarn build
-dfx deploy --network "$ENV"
+    bash ./scripts/getCanisterIds.sh "$ENV"
+
+    cd ..
+
+    bash ./scripts/backendCanisterId.sh
+
+    bash ./scripts/setEnvironment.sh
+
+    yarn build
+
+    dfx deploy --network "$ENV"
+
 fi
 
-# Deploy exchange_rate and exchange_rate_assets
-
+exit 0

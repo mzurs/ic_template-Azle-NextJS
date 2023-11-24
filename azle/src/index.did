@@ -1,1 +1,3 @@
-service : () -> { randomBytes : () -> (text) }
+service: () -> {
+    randomNumber: () -> (nat32);
+}

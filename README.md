@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- dfx > 0.14.0
+- dfx > 0.15.1
 - Nodejs >= 18.16.0
 - yarn
 - jq (Command line based JSON processor).
@@ -17,17 +17,17 @@
 1. Install dependencies:
 
     ```bash
-    yarn && cd/azle && yarn && cd..
+    yarn install:all
     ```
 
 2. Run below commands:
 
    ```bash
-   dfx start --clean --background
+   yarn start_replica
    ```
 
    ```bash
-   bash scripts/deploy_frontend_canister.sh  local
+   yarn deploy
    ```
 
 - To Stop Replica run:

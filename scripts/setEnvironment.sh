@@ -2,21 +2,15 @@
 
 # sudo apt  install jq
 
-value=$(jq '.azle_hello_world.local' config/backend_canister_ids.json)
+value=$(jq '.azle.local' config/backend_canister_ids.json)
 
-echo $value
+echo "$value"
 
-
-
-
-
-nextPublic=NEXT_PUBLIC_CANISTER_ID_AZLE_HELLO_WORLD=
 canisterId=$value
-variable="NEXT_PUBLIC_CANISTER_ID_AZLE_HELLO_WORLD="$canisterId
-# echo " String 1: $variable"
+variable="NEXT_PUBLIC_CANISTER_ID_AZLE="$canisterId
 
-icHost="NEXT_PUBLIC_IC_HOST="http://localhost:8000""
+icHost="NEXT_PUBLIC_IC_HOST=http://localhost:8080"
 
-echo $variable > .env
+echo "$variable" > .env
 echo $icHost >> .env
 

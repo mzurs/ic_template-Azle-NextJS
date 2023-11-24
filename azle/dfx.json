@@ -1,18 +1,17 @@
 {
-    "canisters": {
-        "azle_hello_world": {
-            "type": "custom",
-            "build": "npx azle azle_hello_world",
-            "root": "src",
-            "ts": "src/index.ts",
-            "candid": "src/index.did",
-            "wasm": ".azle/azle_hello_world/azle_hello_world.wasm.gz",
-            "declarations": {
-                "output": "declarations/dfx_generated/",
-        
-                "node_compatibility": true
-              }
-        }
-    
+  "canisters": {
+    "azle": {
+      "type": "custom",
+      "main": "src/index.ts",
+      "candid": "src/index.did",
+      "build": "npx azle azle",
+      "wasm": ".azle/azle/azle.wasm",
+      "gzip": true,
+      "declarations": {
+        "output": "declarations/dfx_generated/",
+
+        "node_compatibility": true
+      }
     }
+  }
 }
