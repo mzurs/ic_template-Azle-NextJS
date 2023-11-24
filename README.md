@@ -1,10 +1,11 @@
-# IC Azle Template
+# Azle + NextJS Template
 
-## Prerequisites
+![Image](public/image.png)
+
+### Prerequisites
 
 - dfx > 0.15.1
-- Nodejs >= 18.16.0
-- yarn
+- Nodejs > 18.16.0
 - jq (Command line based JSON processor).
 - To install jq run:
 
@@ -35,5 +36,3 @@
    ```bash
    dfx stop
    ```
-
-   ![Image](public/image.png)
